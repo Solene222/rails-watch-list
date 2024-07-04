@@ -1,11 +1,40 @@
-<h1>All Lists</h1>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
+</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li>
-      <%= link_to list.name, list_path(list) %>
-    </li>
-  <% end %>
-</ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">My list</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">New list</a>
+          </li>
+          <!--li class="nav-item"-->
+          <!--/li-->
+      </ul>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'New List', new_list_path %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1631805249874-3f546d176de4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+  Save any kind of movies
+</div>
+<div class="container">
+  <h1>All Lists</h1>
+
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(#{<%= list.url%>})">
+        <%= link_to list.name, list_path(list) %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to 'New List', new_list_path %>
+</div>
