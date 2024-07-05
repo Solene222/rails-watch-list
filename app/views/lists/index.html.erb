@@ -30,18 +30,21 @@
     <h1>All Lists</h1>
     <%= link_to 'New List', new_list_path, class: "btn btn-success" %>
   </div>
-  <div class="cards d-flex row">
-    <% @lists.each do |list| %>
-      <% if list.photo.present? %>
-        <div class="card-category m-3 col-6" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
-      <% else %>
-        <div class="card-category m-3 col-6" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://via.placeholder.com/300')">
-      <% end %>
-      <%= link_to list.name, list_path(list) %>
+  <div class="row">
+    <% @lists.each_slice(2) do |lists| %>
+      <div class="row">
+        <% lists.each do |list| %>
+          <div class="col-md-6">
+            <% if list.photo.present? %>
+              <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+            <% else %>
+              <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.url %>')">
+            <% end %>
+              <%= link_to list.name, list_path(list) %>
+              </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
-
-
   </div>
-
 </div>
