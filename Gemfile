@@ -73,3 +73,4 @@ gem "simple_form"
 gem "sassc-rails"
 gem 'faker'
 gem 'rest-client'
+gem "cloudinary"
