@@ -33,7 +33,7 @@ repos_id_ten.each do |movie|
   movie_response = RestClient.get(movie_url)
   movie_detail = JSON.parse(movie_response)
 
-  movie = Movie.new(
+  movie = Movie.create!(
     title: movie_detail['original_title'],
     overview: movie_detail['overview'],
     poster_url: "https://image.tmdb.org/t/p/w500#{movie_detail['poster_path']}",
